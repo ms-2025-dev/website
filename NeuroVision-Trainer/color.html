@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Vision - 色彩判別テスト</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        #game-canvas {
+            display: grid;
+            gap: 10px;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1 / 1;
+            margin: 20px auto;
+        }
+        .color-tile {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .color-tile:active { transform: scale(0.95); }
+        .result-overlay {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html">← 戻る</a>
+            <div id="score-display">レベル: 1</div>
+        </div>
+
+        <div id="game-canvas"></div>
+        
+        <div class="instruction-box">
+            <p id="instruction-text">1つだけ色が違うタイルをタップしてください</p>
+            <div id="timer-display" style="font-size: 1.5rem; color: #ff4757;">残り: 15秒</div>
+        </div>
+
+        <button id="start-btn" class="btn">テスト開始</button>
+    </div>
+    <div id="result-section" style="display: none;">
+    </div>
+
+    <div id="history-section" style="margin-top: 30px; border-top: 1px solid #ccc; padding-top: 20px;">
+        <h4>過去の最高レベル記録</h4>
+        <ul id="color-history-list" style="list-style: none; padding: 0; font-size: 0.9rem;">
+            </ul>
+        <button id="clear-color-history" class="btn-small" style="background: #ff4757; margin-top: 10px;">履歴をクリア</button>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/color-logic.js"></script>
+</body>
+</html>
