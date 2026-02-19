@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Eye Trivia - 目に関する雑学</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .trivia-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin: 40px 0;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            border-left: 5px solid var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html">← 戻る</a>
+            <div>目に関する豆知識</div>
+        </div>
+
+        <div id="trivia-display" class="trivia-card">
+            画面下のボタンを押して、雑学を表示しましょう！
+        </div>
+
+        <button id="next-trivia" class="btn">他の雑学を見る</button>
+        
+        <div class="instruction-box">
+            <p class="sub-text">※ 知識を深めることは、目を大切にする意識に繋がります。</p>
+        </div>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script>
+        const triviaList = [
+            "人間の目は、約1,000万色の異なる色を識別できると言われています。",
+            "目の筋肉は、体の中で最も活発に動く筋肉です。",
+            "まばたきは1日に平均約15,000回から20,000回行われています。",
+            "実は「見る」作業の半分は、目ではなく脳で行われています。",
+            "青い目をした人は、全人類の共通の祖先から生まれた突然変異だという説があります。",
+            "角膜は、人体で唯一「血液」が通っていない組織です（酸素を空気から直接取り込みます）。",
+            "目のピント調節機能は、カメラのレンズよりも遥かに速く動きます。",
+            "「20-20-20ルール」：20分作業したら、20フィート(6m)先を、20秒間見ると目が疲れにくくなります。",
+            "人間の目は、わずか数個の光子（光の最小単位）さえも感知できるほど敏感です。",
+            "ダチョウの目は、彼らの脳よりも大きいです。"
+        ];
+
+        const display = document.getElementById('trivia-display');
+        const btn = document.getElementById('next-trivia');
+
+        function showRandomTrivia() {
+            const currentText = display.innerText;
+            let newItem = triviaList[Math.floor(Math.random() * triviaList.length)];
+            
+            // 同じものが続けて出ないようにする
+            while(newItem === currentText) {
+                newItem = triviaList[Math.floor(Math.random() * triviaList.length)];
+            }
+            
+            display.style.opacity = 0;
+            setTimeout(() => {
+                display.innerText = newItem;
+                display.style.opacity = 1;
+                display.style.transition = "opacity 0.5s";
+            }, 200);
+        }
+
+        btn.onclick = showRandomTrivia;
+        // 初回表示
+        window.onload = showRandomTrivia;
+    </script>
+</body>
+</html>
