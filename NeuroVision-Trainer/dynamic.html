@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Vision - 動体視力トレーニング</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        #game-canvas {
+            overflow: hidden;
+            position: relative;
+            background: #000; /* 数字を見やすくするため黒背景 */
+            height: 300px;
+            border-radius: 8px;
+        }
+        .moving-number {
+            position: absolute;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        /* 入力エリアのレイアウト調整 */
+        .input-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* 中央の大きな入力欄 */
+        #answer-input {
+            width: 140px;
+            font-size: 2.5rem;
+            text-align: center;
+            border-radius: 12px;
+            border: 3px solid var(--accent-color);
+            padding: 5px;
+        }
+
+        /* 右側のボタン群 */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .button-group .btn {
+            margin: 0;
+            padding: 10px 25px;
+            min-width: 100px;
+        }
+
+        /* 年齢・コンボ表示 */
+        #result-info {
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            min-height: 2em;
+        }
+        #combo-display { color: #e67e22; font-size: 1.2rem; margin-right: 15px; }
+        #age-result { color: var(--accent-color); font-size: 1.2rem; }
+        #stats-display { font-size: 0.85rem; color: #666; margin-top: 5px; font-weight: normal; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html">← 戻る</a>
+            <div id="score-display">スコア: 0</div>
+        </div>
+
+        <div id="game-canvas"></div>
+
+        <div id="result-info">
+            <span id="combo-display"></span>
+            <span id="age-result"></span>
+            <div id="stats-display">正答率: 0% | 試行: 0回</div>
+        </div>
+
+        <div class="input-container">
+            <input type="number" id="answer-input" placeholder="??" min="10" max="99">
+            
+            <div class="button-group">
+                <button id="submit-btn" class="btn">回答</button>
+                <button id="start-btn" class="btn" style="background-color: #2ecc71;">スタート</button>
+            </div>
+        </div>
+
+        <div class="control-panel" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 400px; margin: 0 auto 20px;"> 
+            <div class="setting-item" style="flex-direction: column; align-items: flex-start;">
+                <label style="font-size: 0.8rem; margin-bottom: 5px; opacity: 0.8;">トレーニングモード</label>
+                <select id="game-mode" style="width: 100%; height: 40px;">
+                    <option value="level-up">速度アップ</option>
+                    <option value="random">ランダム</option>
+                </select>
+            </div>
+        
+            <div class="setting-item" style="flex-direction: column; align-items: flex-start;">
+                <label style="font-size: 0.8rem; margin-bottom: 5px; opacity: 0.8;">基本速度</label>
+                <select id="speed-level" style="width: 100%; height: 40px;">
+                    <option value="slow">ゆっくり</option>
+                    <option value="normal" selected>ふつう</option>
+                    <option value="fast">はやい</option>
+                    <option value="pro">プロ</option>
+                </select>
+            </div>
+        
+        </div>
+
+        <p class="instruction">画面を横切る「2桁の数字」を読み取ってください</p>
+        <div class="setting-item" style="margin-top: 15px;">
+            <input type="text" id="user-name" placeholder="お名前（任意）" style="padding: 8px; border-radius: 5px; border: 1px solid #ddd; width: 100%;">
+        </div>
+        
+        <div class="history-section" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;">
+            <h4>直近の履歴</h4>
+            <ul id="history-list" style="list-style: none; padding: 0; font-size: 0.9rem;">
+                </ul>
+        </div>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/dynamic-logic.js"></script>
+</body>
+</html>
