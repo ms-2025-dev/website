@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Vision Check - 簡易視力検査</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 視力検査専用スタイル */
+        .calibration-box {
+            border: 2px dashed var(--accent-color);
+            background: #f9f9f9;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #landolt-container {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .landolt-ring {
+            border: 0 solid #333;
+            border-radius: 50%;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .landolt-gap {
+            position: absolute;
+            background: var(--container-bg);
+        }
+        .check-ui { display: none; }
+        .result-display { font-size: 2rem; color: var(--accent-color); font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html">← 戻る</a>
+            <div id="status">設定中...</div>
+        </div>
+
+        <div id="setup-section">
+            <h3>1. 画面サイズの調整</h3>
+            <p class="sub-text">手持ちのカード（クレジットカード等）を画面に当て、下の枠のサイズを合わせてください。(横幅が85.6mm)</p>
+            <div id="calib-box" class="calibration-box" style="width: 300px; height: 180px;">
+                💳 カードを重ねてください
+            </div>
+            <input type="range" id="calib-slider" min="100" max="600" value="300" style="width: 100%;">
+            
+            <h3 style="margin-top:20px;">2. 測定距離の選択</h3>
+            <select id="distance-select" class="btn" style="background-color: #ffffff !important; color: #000000 !important; border: 2px solid #ccc; cursor: pointer; -webkit-appearance: menulist;">
+                <option value="500">50cm (スマホ・PC近接)</option>
+                <option value="1000">1m (少し離れて)</option>
+                <option value="3000">3m (本格測定)</option>
+            </select>
+            <button id="setup-complete-btn" class="btn">検査開始</button>
+        </div>
+
+        <div id="test-section" class="check-ui">
+            <div id="landolt-container">
+                <div id="ring" class="landolt-ring">
+                    <div id="gap" class="landolt-gap"></div>
+                </div>
+            </div>
+            <p class="instruction">切れ目はどちらを向いていますか？</p>
+            <div class="control-panel" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                <div></div><button class="btn dir-btn" data-dir="top">↑</button><div></div>
+                <button class="btn dir-btn" data-dir="left">←</button>
+                <button class="btn dir-btn" data-dir="bottom">↓</button>
+                <button class="btn dir-btn" data-dir="right">→</button>
+            </div>
+        </div>
+
+        <div id="result-section" class="check-ui" style="text-align: center;">
+            <h3>あなたの推定視力</h3>
+            <div id="final-result" class="result-display">0.0</div>
+            <p>※本結果は目安です。正確な検査は眼科を受診してください。</p>
+            
+            <div id="history-container" style="margin-top: 30px; text-align: left; border-top: 1px solid #ccc; padding-top: 15px;">
+                <h4>過去の記録</h4>
+                <ul id="history-list" style="list-style: none; padding: 0; max-height: 150px; overflow-y: auto;">
+                    </ul>
+                <button id="clear-history" class="btn-small" style="background: #ff4757; margin-top: 10px;">履歴を消去</button>
+            </div>
+        
+            <button onclick="location.reload()" class="btn" style="margin-top: 20px;">再検査</button>
+        </div>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/check-logic.js"></script>
+</body>
+</html>
