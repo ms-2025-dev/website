@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Accommodation Training - Vision</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html">← 戻る</a>
+            <div id="status-display">準備中...</div>
+        </div>
+
+        <div class="control-panel">
+            <label for="size-slider">マークの大きさ: </label>
+            <input type="range" id="size-slider" min="15" max="150" value="80">
+            <span id="size-value">80px</span>
+        </div>
+        
+        <div id="game-canvas">
+            <div id="focus-target">C</div>
+        </div>
+
+        <div class="instruction-box">
+            <p id="instruction-text">「スタート」を押すと始まります</p>
+            <p class="sub-text">※ 遠くを見るときは、3m以上先を見てください</p>
+        </div>
+
+        <button id="start-btn" class="btn">トレーニング開始</button>
+        <div class="setting-item" style="margin-top: 15px;">
+            <input type="text" id="user-name" placeholder="お名前（任意）" style="padding: 8px; border-radius: 5px; border: 1px solid #ddd; width: 100%;">
+        </div>
+        
+        <div class="history-section" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;">
+            <h4>直近の履歴</h4>
+            <ul id="history-list" style="list-style: none; padding: 0; font-size: 0.9rem;">
+                </ul>
+        </div>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/stretch-logic.js"></script>
+</body>
+</html>
