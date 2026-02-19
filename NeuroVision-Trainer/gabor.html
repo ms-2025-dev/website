@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Gabor Training - Vision</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html">← 戻る</a>
+            <div id="score-display">スコア: 0</div>
+            <span id="remaining-count" style="margin-left: 15px; color: #ff4757; font-weight: bold;"></span>
+        </div>
+        
+        <div class="control-panel">
+            <div class="setting-item">
+                <label>サイズ: 
+                    <input type="range" id="size-slider" min="40" max="100" value="70">
+                    <span id="size-value">70px</span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <label>配置: 
+                    <select id="layout-select">
+                        <option value="grid">等間隔</option>
+                        <option value="random">ランダム</option>
+                        
+                    </select>
+                </label>
+            </div>
+            <button id="hint-btn" class="btn-small">ターゲットを探す</button>
+        </div>
+
+        <div id="game-canvas"></div>
+
+        <div class="sample-container">
+            <p class="sample-label">【今回のターゲット】</p>
+            <div id="target-sample" class="gabor-patch"></div>
+        </div>
+
+        <p class="instruction">見本と同じ「向き」の模様を探してクリックしてください</p>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/gabor-logic.js"></script>
+</body>
+</html>
