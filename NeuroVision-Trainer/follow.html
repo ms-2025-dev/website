@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Follow Training - Vision</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html">← 戻る</a>
+            <div id="score-display">経過時間: 0s</div>
+        </div>
+        
+        <div id="game-canvas">
+            <div id="target-ball"></div>
+        </div>
+        <p class="instruction">動く赤い円を目だけで追い続けてください</p>
+        <button id="start-btn" class="btn">スタート</button>
+        <div class="setting-item" style="margin-top: 15px;">
+            <input type="text" id="user-name" placeholder="お名前（任意）" style="padding: 8px; border-radius: 5px; border: 1px solid #ddd; width: 100%;">
+        </div>
+        
+        <div class="history-section" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;">
+            <h4>直近の履歴</h4>
+            <ul id="history-list" style="list-style: none; padding: 0; font-size: 0.9rem;">
+                </ul>
+        </div>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/follow-logic.js"></script>
+</body>
+</html>
