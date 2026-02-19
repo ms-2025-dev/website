@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>視力回復トレーニング - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>視力回復トレーニング</h1>
+        <p>トレーニングメニューを選んでください</p>
+        
+        <div class="menu">
+            <a href="gabor.html"   class="btn">ガボール・パッチ (脳の視覚刺激)</a>
+            <a href="follow.html"  class="btn">動体追従 (目のストレッチ)</a>
+            <a href="stretch.html" class="btn">遠近ストレッチ (ピント調整機能)</a>
+            <a href="saccade.html" class="btn">サッケード運動 (素早い視点移動)</a>
+            <a href="dynamic.html" class="btn">動体視力 (数字読み取り)</a>
+            <a href="check.html"   class="btn medical-btn">簡易視力検査 (精度優先)</a>
+            <a href="color.html"   class="btn">色彩判別 (色の感度をチェック)</a>
+            <a href="trivia.html"  class="btn">目に関する雑学 (豆知識)</a>
+        </div>
+
+        <div class="settings-section">
+            <h3>アプリ設定</h3>
+            
+            <div class="setting-item">
+                <label>デザイン：
+                    <select id="theme-select">
+                        <option value="default">シンプル</option>
+                        <option value="medical">スタンダード</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="setting-item">
+                <label>
+                    <input type="checkbox" id="notif-toggle"> 20-20-20ルール通知を有効にする
+                </label>
+                <p class="sub-text">※20分ごとに、20秒間遠くを見るよう通知します</p>
+            </div>
+
+            <div class="setting-item">
+                <label><input type="checkbox" id="sepia-toggle"> ブルーライト削減モード</label>
+            </div>
+            
+            <div class="setting-item">
+                <label><input type="checkbox" id="sound-toggle"> ガイド音を有効にする</label>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/core.js"></script>
+</body>
+</html>
